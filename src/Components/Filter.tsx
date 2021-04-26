@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-community/picker';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 const Filters = ({term, onTermChange, onSubmit}: Props) => {
   const [selected, setSelected] = useState('Filter here');
-  const [currentLabel, setCurrentLabel] = useState('Select your carrier');
+  const [currentLabel, setCurrentLabel] = useState('Select your filter');
 
   const pickerChange = (index: number) => {
     list.map((v, i) => {
@@ -32,14 +32,7 @@ const Filters = ({term, onTermChange, onSubmit}: Props) => {
 
   return (
     <View style={{flex: 1}}>
-      <View
-        style={{
-          borderRadius: 10,
-          borderWidth: 1,
-          borderColor: 'navy',
-          overflow: 'hidden',
-          margin: 5,
-        }}>
+      <View style={styles.picker}>
         <Picker
           prompt={'Pick a filter'}
           selectedValue={selected}
@@ -64,16 +57,12 @@ const Filters = ({term, onTermChange, onSubmit}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  backgroundStyle: {
-    marginTop: 10,
-    backgroundColor: '#F0EEEE',
-    borderColor: 'grey',
-    height: 50,
+  picker: {
+    borderRadius: 10,
     borderWidth: 1,
-    borderRadius: 5,
-    marginHorizontal: 15,
-    flexDirection: 'row',
-    marginBottom: 10,
+    borderColor: 'navy',
+    overflow: 'hidden',
+    margin: 5,
   },
   inputStyle: {
     flex: 1,
